@@ -18,14 +18,13 @@ manually compiled API information used in [catweb](https://www.roblox.com/games/
 
 ## usage
 
-all API information is provided as a *single* `api.json` file located in this repository.
+all API information is provided as a single `api.json` file located in this repository.
 
-> *the `api.json` file is **NOT** a CatWeb script and you **cannot** import it!*
+> *you **can't** import `api.json` into CatWeb because it is **not** a script!*
 
-additionaly:
+the `main` branch contains the *latest* API info for catweb.
 
-- the `main` branch contains the latest API info for catweb;
-- a *new* **Git tag** is created for every *new* version of CatWeb, so you can grab API info for a specific version and compare changes
+every time a new version of CatWeb releases, a new *Git tag* is created, so you can grab API data for a specific version and compare changes.
 
 ### option 1: fetch directly (recommended)
 
