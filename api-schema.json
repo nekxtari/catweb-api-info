@@ -2,5 +2,21 @@
   "$schema": "https://json-schema.org/draft-07/schema",
   "$id": "https://github.com/nekxtari/catweb-api-info/blob/main/api-schema.json",
   "title": "Curated API information for CatWeb",
-  "description": "Manually compiled API information about elements, properties & scripting in the roblox game CatWeb"
+  "description": "Manually compiled API information about elements, properties & scripting in the roblox game CatWeb",
+  "properties": {
+    "formatVersion": {
+      "type": "integer",
+      "description": "The version of this document's format. When any breaking changes are made to the API's schema, this version number will be increased by 1.",
+      "minimum": 1
+    },
+    "catwebVersion": {
+      "type": "string",
+      "description": "CatWeb version that this document decribes.",
+      "pattern": "^v\\d+\\.\\d+\\.\\d+\\.\\d+$"
+    }
+  },
+  "required": [
+    "formatVersion",
+    "catwebVersion"
+  ]
 }
