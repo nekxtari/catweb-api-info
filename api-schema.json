@@ -3,6 +3,10 @@
   "$id": "https://github.com/nekxtari/catweb-api-info/blob/main/api-schema.json",
   "title": "Curated API information for CatWeb",
   "description": "Manually compiled API information about elements, properties & scripting in the roblox game CatWeb",
+  "required": [
+    "formatVersion",
+    "catwebVersion"
+  ],
   "properties": {
     "formatVersion": {
       "type": "integer",
@@ -14,9 +18,5 @@
       "description": "CatWeb version that this document decribes.",
       "pattern": "^v\\d+\\.\\d+\\.\\d+\\.\\d+$"
     }
-  },
-  "required": [
-    "formatVersion",
-    "catwebVersion"
-  ]
+  }
 }
