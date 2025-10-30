@@ -5,7 +5,8 @@
   "description": "Manually compiled API information about elements, properties & scripting in the roblox game CatWeb",
   "required": [
     "formatVersion",
-    "catwebVersion"
+    "catwebVersion",
+    "classes"
   ],
   "properties": {
     "formatVersion": {
@@ -17,6 +18,76 @@
       "type": "string",
       "description": "CatWeb version that this document decribes.",
       "pattern": "^v\\d+\\.\\d+\\.\\d+\\.\\d+$"
+    },
+    "classes": {
+      "type": "object",
+      "description": "All CatWeb classes",
+      "additionalProperties": {
+        "type": "object",
+        "description": "An information about an individual *class*. All objects in a CatWeb page have a given class that determines their behavior.",
+        "required": [
+          "className",
+          "displayName"
+        ],
+        "properties": {
+          "className": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "A unique name of the class. Consists of a Roblox className, optionally followed by '?behavior_name' to give a special effect within CatWeb.\n\nIf a class name doesn't exist, then an object of this class is not a real Roblox Instance."
+          },
+          "displayName": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "A user-friendly name of the class, usually seen in the Editor. If a display name doesn't exist however, that means the class cannot be used: classes without a display name are usually made to be inherited by other classes."
+          },
+          "help": {
+            "type": "string",
+            "description": "An short paragraph about what an element of this class does and how to use it."
+          },
+          "special": {
+            "const": true,
+            "description": "Determines whether this class is special. Special classes have some deviations that shouldn't be present in a proper OOP system (such as not being able to delete or move an object)"
+          },
+          "deviations": {
+            "type": "array",
+            "description": "A list of deviations that this class has.\n\nThis field is only present when 'special' is set to true.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "inherits": {
+            "type": "array",
+            "description": "A list of other classes that this class inherits properties from.",
+            "items": {
+              "type": "string"
+            },
+            "examples": [
+              [
+                "GuiObject"
+              ],
+              [
+                "styling_object"
+              ]
+            ]
+          }
+        }
+      },
+      "if": {
+        "properties": {
+          "special": {
+            "const": false
+          }
+        }
+      },
+      "else": {
+        "required": [
+          "deviations"
+        ]
+      }
     }
   }
 }
